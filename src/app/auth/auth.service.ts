@@ -9,10 +9,10 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  login(name: string, password: string) {
+  login(email: string, password: string) {
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this.http.post(this.url + 'Login', JSON.stringify({ name, password }),
+    return this.http.post(this.url + 'Login', JSON.stringify({ email, password }),
       { headers: myHeaders, responseType: 'json'});
   }
 
