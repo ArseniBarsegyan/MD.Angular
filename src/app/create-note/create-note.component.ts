@@ -47,8 +47,6 @@ export class CreateNoteComponent implements OnInit {
 
     this.notesService.createNote(note).subscribe(data => {
       alert('Ok');
-    }, error => {
-      console.log(error);
     });
     this.router.navigate(['notes']);
   }

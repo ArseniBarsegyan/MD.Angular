@@ -13,14 +13,14 @@ export class AuthService {
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.http.post(this.url + 'Login', JSON.stringify({ email, password }),
-      { headers: myHeaders, responseType: 'json'});
+      { headers: myHeaders, responseType: 'text'});
   }
 
   register(email: string, password: string) {
     const myHeaders = new HttpHeaders().set('Content-type', 'application/json');
 
     return this.http.post(this.url + 'Register', JSON.stringify({ email, password }),
-      { headers: myHeaders});
+      { headers: myHeaders, responseType: 'text'});
   }
 
   getToken() {

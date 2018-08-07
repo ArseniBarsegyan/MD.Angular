@@ -27,7 +27,9 @@ export class SignupComponent implements OnInit {
     this.authService.register(email, password)
       .subscribe(
         (token) => {
-          alert(token);
+        },
+        (error) => {
+          console.log(error);
         }
       );
   }

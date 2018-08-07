@@ -28,6 +28,9 @@ export class SigninComponent implements OnInit {
       .subscribe(
         (token) => {
           alert(token);
+        },
+        (error) => {
+          console.log(error);
         }
       );
   }
