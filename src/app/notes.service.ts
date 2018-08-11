@@ -5,7 +5,7 @@ import { Note } from './note';
 @Injectable()
 export class NotesService {
   private headers: HttpHeaders;
-  private url = 'http://localhost:51869/api/notes';
+  private url = 'http://localhost:8300/api/notes';
 
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});

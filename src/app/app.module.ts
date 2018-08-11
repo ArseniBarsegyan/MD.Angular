@@ -14,9 +14,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import {AuthService} from './auth/auth.service';
+import { HomeComponent } from './home/home.component';
+import {DropdownDirective} from './dropdown.directive';
 
 @NgModule({
   declarations: [
+    DropdownDirective,
     AppComponent,
     HeaderComponent,
     NotesListComponent,
@@ -25,12 +28,16 @@ import {AuthService} from './auth/auth.service';
     PageNotFoundComponent,
     SigninComponent,
     SignupComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule
+  ],
+  exports: [
+    DropdownDirective
   ],
   providers: [NotesService, AuthService],
   bootstrap: [AppComponent]

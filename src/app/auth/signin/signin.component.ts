@@ -24,14 +24,7 @@ export class SigninComponent implements OnInit {
   onSubmit(signInForm: NgForm) {
     const email = signInForm.controls['email'].value;
     const password = signInForm.controls['password'].value;
-    this.authService.login(email, password)
-      .subscribe(
-        (token) => {
-          alert(token);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    this.authService.login(email, password);
+    this.router.navigate(['/']);
   }
 }

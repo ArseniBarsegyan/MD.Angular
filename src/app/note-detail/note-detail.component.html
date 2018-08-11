@@ -1,6 +1,8 @@
-<div class="note-detail-container">
-  <div *ngFor="let photo of note?.photos">
-    <img src="data:image/gif;base64,{{ photo?.image }}" height="400" alt="img" />
+<div class="row">
+  <div class="col-xs-12">
+    <div *ngFor="let photo of note?.photos">
+      <img src="data:image/gif;base64,{{ photo?.image }}" height="400" alt="img" />
+      <p> {{ note?.date | date }} {{ note?.description }} </p>
+    </div>
   </div>
-  <p> {{ note?.date | date }} {{ note?.description }} </p>
 </div>

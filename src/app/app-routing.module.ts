@@ -6,9 +6,10 @@ import {NoteDetailComponent} from './note-detail/note-detail.component';
 import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {HomeComponent} from './home/home.component';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/notes', pathMatch: 'full'},
+  {path: '', component: HomeComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'notes', component: NotesListComponent},
