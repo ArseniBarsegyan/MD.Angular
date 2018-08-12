@@ -13,14 +13,12 @@ export class NoteDetailComponent implements OnInit {
   id: number;
 
   constructor(private route: ActivatedRoute, private notesService: NotesService) {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-    });
-    this.notesService.getNoteById(this.id).subscribe(result => {
-      this.note = result;
-    });
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = +params['id'];
+      this.note = this.notesService.getNoteById(this.id);
+    });
   }
 }

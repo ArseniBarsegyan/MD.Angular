@@ -1,32 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Note} from '../note';
 import {NotesService} from '../notes.service';
+import {Subscription} from 'rxjs/Subscription';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.css']
 })
-export class NotesListComponent implements OnInit {
+export class NotesListComponent implements OnInit, OnDestroy {
   notes: Note[];
-  isNotesListEmpty: boolean;
+  subscription: Subscription;
 
-  constructor(private notesService: NotesService) {
-  }
-
-  loadNotes() {
-    this.notesService.getNotes().subscribe((data: Note[]) => {
-      if (data !== null) {
-        this.notes = data;
-        this.isNotesListEmpty = false;
-      } else {
-        this.notes = [];
-        this.isNotesListEmpty = true;
-      }
-    });
+  constructor(private notesService: NotesService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.loadNotes();
+    this.notesService.getNotes();
+    this.subscription = this.notesService.notesChanged
+      .subscribe((notes: Note[]) => {
+        this.notes = notes;
+      });
+  }
+
+  onNewNote() {
+    if (!this.authService.isAuthenticated()) {
+      alert('Plase, login');
+    }
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

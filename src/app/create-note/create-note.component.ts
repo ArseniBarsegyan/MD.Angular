@@ -45,9 +45,7 @@ export class CreateNoteComponent implements OnInit {
       0, createComponentForm.controls['file'].value['value']);
     note.photos = [photo];
 
-    this.notesService.createNote(note).subscribe(data => {
-      alert('Ok');
-    });
+    this.notesService.createNote(note);
     this.router.navigate(['notes']);
   }
 }

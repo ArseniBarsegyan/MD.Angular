@@ -16,6 +16,11 @@ import { SignupComponent } from './auth/signup/signup.component';
 import {AuthService} from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
 import {DropdownDirective} from './dropdown.directive';
+import { NotesComponent } from './notes/notes.component';
+import { NoteItemComponent } from './note-item/note-item.component';
+import {AuthGuardService} from './auth/auth.guard.service';
+import { NoteStartComponent } from './note-start/note-start.component';
+import { NoteEditComponent } from './note-edit/note-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,10 @@ import {DropdownDirective} from './dropdown.directive';
     SigninComponent,
     SignupComponent,
     HomeComponent,
+    NotesComponent,
+    NoteItemComponent,
+    NoteStartComponent,
+    NoteEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +48,7 @@ import {DropdownDirective} from './dropdown.directive';
   exports: [
     DropdownDirective
   ],
-  providers: [NotesService, AuthService],
+  providers: [NotesService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

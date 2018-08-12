@@ -1,0 +1,20 @@
+.header {
+  background-size: auto;
+  height: 100vh;
+  background: url("../../assets/img/beverage-book-caffeine_2560.jpg") fixed no-repeat center;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+.header button {
+  position: absolute;
+  top: 50%;
+  width: 200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}

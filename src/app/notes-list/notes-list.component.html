@@ -1,17 +1,14 @@
-<div class="notes-list">
-  <div class="col-xs-4">
-    <a class="btn btn-primary" [routerLink]="['create']">Create note</a>
-    <div *ngIf="isNotesListEmpty">
-      <p>Notes list is empty</p>
-    </div>
-    <div class="list-group">
-      <div *ngFor="let note of notes">
-        <a class="list-group-item" [routerLink]="['detail',note.id]" routerLinkActive="active" style="cursor: pointer;">
-          <img src="data:image/gif;base64,{{ note.photos[0].image }}" height="50" alt="img" />
-          <p class="list-group-item-heading">{{ note.date | date }}</p>
-          <p class="list-group-item-text">{{ note.description }}</p>
-        </a>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="button success" (click)="onNewNote()">New note</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-note-item
+      *ngFor="let noteEl of notes; let i = index"
+      [note]="noteEl"
+      [index]="i"></app-note-item>
   </div>
 </div>

@@ -16,7 +16,6 @@ export class AuthService {
       { headers: myHeaders, responseType: 'text'})
       .subscribe((token) => {
           this.token = token;
-          console.log(token);
         },
         (error) => {
           console.log(error);
@@ -31,7 +30,6 @@ export class AuthService {
       { headers: myHeaders, responseType: 'text'})
       .subscribe((token) => {
         this.token = token;
-        console.log(token);
       },
       (error) => {
         console.log(error);
