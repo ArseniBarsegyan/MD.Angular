@@ -6,7 +6,7 @@ import {Subject} from 'rxjs/Subject';
 @Injectable()
 export class NotesService {
   private headers: HttpHeaders;
-  private url = 'http://localhost:8300/api/notes';
+  private url = 'http://localhost:51870/api/notes';
 
   private notes: Note[] = [];
   notesChanged = new Subject<Note[]>();
