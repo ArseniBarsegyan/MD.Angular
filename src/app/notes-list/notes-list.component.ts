@@ -21,6 +21,7 @@ export class NotesListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log(this.authService.getToken());
     this.notesService.getNotes();
     this.subscription = this.notesService.notesChanged
       .subscribe((notes: Note[]) => {

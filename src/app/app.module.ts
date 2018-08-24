@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
@@ -21,6 +21,7 @@ import { NoteItemComponent } from './note-item/note-item.component';
 import {AuthGuardService} from './auth/auth.guard.service';
 import { NoteStartComponent } from './note-start/note-start.component';
 import { NoteEditComponent } from './note-edit/note-edit.component';
+import {AuthInterceptor} from './shared/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,12 @@ import { NoteEditComponent } from './note-edit/note-edit.component';
   exports: [
     DropdownDirective
   ],
-  providers: [NotesService, AuthService, AuthGuardService],
+  providers: [
+    NotesService,
+    AuthService,
+    AuthGuardService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,16 +2,18 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Note } from './note';
 import {Subject} from 'rxjs/Subject';
+import {AuthService} from './auth/auth.service';
 
 @Injectable()
 export class NotesService {
   private headers: HttpHeaders;
-  private url = 'http://localhost:51870/api/notes';
+  private url = 'http://localhost:8300/api/notes';
 
   private notes: Note[] = [];
   notesChanged = new Subject<Note[]>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
+    console.log(this.auth.getToken());
     this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
   }
 
