@@ -7,7 +7,7 @@ import {AuthService} from './auth/auth.service';
 @Injectable()
 export class NotesService {
   private headers: HttpHeaders;
-  private url = 'http://localhost:8300/api/notes';
+  private url = 'http://localhost:51870/api/notes';
 
   private notes: Note[] = [];
   notesChanged = new Subject<Note[]>();
@@ -30,10 +30,11 @@ export class NotesService {
     return this.notes.slice();
   }
 
+  // Get in reverse order since all notes ordered by id descending
   getNoteById(id: number) {
-    this.http.get(this.url + '/' + (id + 1), {headers: this.headers})
+    this.http.get(this.url + '/' + (this.notes.length - id), {headers: this.headers})
       .subscribe((result: Note) => {
-        this.notes[result.id - 1] = result;
+        this.notes[this.notes.length - result.id] = result;
       }, error => {
         console.log(error);
       });
