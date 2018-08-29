@@ -1,8 +1,8 @@
-<div class="header">
+<div class="topnav">
   <a routerLink="/" class="logo">My Diary app</a>
   <a routerLink="/notes" routerLinkActive="active">Notes</a>
 
-  <ul class="header-right">
+  <ul class="topnav-right">
     <ng-template [ngIf]="!isAuthenticated()">
       <a routerLink="/signup">Register</a>
       <a routerLink="/signin">Login</a>
