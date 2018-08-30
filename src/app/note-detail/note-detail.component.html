@@ -1,10 +1,19 @@
+<!-- Full size image -->
+<div #modalWindow class="modal">
+  <span class="close"(click)="onCloseModal(modalWindow)">&times;</span>
+  <img class="modal-content" #modalImage />
+  <div id="caption" #caption></div>
+</div>
+
 <div class="row">
   <div class="col-xs-12">
     <div *ngFor="let photo of note?.photos">
       <img src="data:image/gif;base64,{{ photo?.image }}"
-           alt="No photo"
+           alt="Note photo"
+           (click)="onImageClick(rootImage, modalWindow, modalImage, caption)"
            class="img-responsive"
-           style="max-height: 300px;" />
+           #rootImage
+           style="max-height: 300px; cursor: pointer;" />
     </div>
   </div>
 </div>

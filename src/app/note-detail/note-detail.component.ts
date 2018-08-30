@@ -21,4 +21,14 @@ export class NoteDetailComponent implements OnInit {
       this.note = this.notesService.getNoteById(this.id);
     });
   }
+
+  onImageClick(rootImage: HTMLImageElement, modalWindow: HTMLDivElement, modalImage: HTMLImageElement, caption: HTMLDivElement) {
+    modalWindow.style.display = 'block';
+    modalImage.setAttribute('src', rootImage.src);
+    caption.innerHTML = rootImage.alt;
+  }
+
+  onCloseModal(modalImage: HTMLDivElement) {
+    modalImage.style.display = 'none';
+  }
 }
