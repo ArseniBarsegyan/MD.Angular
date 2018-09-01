@@ -14,4 +14,4 @@
 .button-info {background-color: #2196F3;} /* Blue */
 .button-info:hover {background: #0b7dda; }
 
-.button:disabled { background-color: #e7e7e7; cursor: not-allowed }
+.button:disabled { background-color: #e7e7e7; cursor: not-allowed; color: #999999; }

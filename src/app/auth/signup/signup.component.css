@@ -1,7 +1,21 @@
+.header {
+  background-size: auto;
+  height: 100vh;
+  background: url("../../../assets/img/beverage-book-caffeine_2560.jpg") fixed no-repeat center;
+  color: white;
+}
+
+hr {
+  max-width: 250px;
+  margin-left: 0;
+}
+
 input {
+  background: transparent;
   max-width: 250px;
   border-radius: 0;
   height: 50px;
+  color: white;
 }
 
 button {
