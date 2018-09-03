@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../auth.service';
@@ -24,7 +24,14 @@ export class SigninComponent implements OnInit {
   onSubmit(signInForm: NgForm) {
     const email = signInForm.controls['email'].value;
     const password = signInForm.controls['password'].value;
-    this.authService.login(email, password);
-    this.router.navigate(['/notes/']);
+    this.authService.login(email, password)
+      .subscribe((token) => {
+          localStorage.setItem('user', token);
+          this.router.navigate(['/notes/']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }

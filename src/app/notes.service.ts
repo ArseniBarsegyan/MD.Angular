@@ -13,7 +13,6 @@ export class NotesService {
   notesChanged = new Subject<Note[]>();
 
   constructor(private http: HttpClient, private auth: AuthService) {
-    console.log(this.auth.getToken());
     this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
   }
 

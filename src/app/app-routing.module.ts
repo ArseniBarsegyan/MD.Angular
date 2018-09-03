@@ -16,11 +16,11 @@ const appRoutes: Routes = [
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
   {
-    path: 'notes', component: NotesComponent, children: [
+    path: 'notes', component: NotesComponent, canActivate: [AuthGuardService], children: [
       {path: '', component: NoteStartComponent},
-      {path: 'new', component: CreateNoteComponent, canActivate: [AuthGuardService]},
+      {path: 'new', component: CreateNoteComponent},
       {path: ':id', component: NoteDetailComponent},
-      {path: ':id/edit', component: NoteEditComponent, canActivate: [AuthGuardService]},
+      {path: ':id/edit', component: NoteEditComponent},
     ]
   },
   {path: '**', component: PageNotFoundComponent}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../auth.service';
@@ -24,7 +24,13 @@ export class SignupComponent implements OnInit {
   onSubmit(signUpForm: NgForm) {
     const email = signUpForm.controls['email'].value;
     const password = signUpForm.controls['password'].value;
-    this.authService.register(email, password);
-    this.router.navigate(['/']);
+    this.authService.register(email, password)
+      .subscribe((token) => {
+          localStorage.setItem('user', token);
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          console.log(error);
+        });
   }
 }
