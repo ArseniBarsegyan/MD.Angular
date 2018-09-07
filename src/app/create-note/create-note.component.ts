@@ -24,10 +24,18 @@ export class CreateNoteComponent implements OnInit {
     });
   }
 
-  onFileChange(event: any) {
+  onFileChange(event: any, fileNames: HTMLLabelElement) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
+
+      var files = event.target.files;
+      console.log(files);
+
+      for (let el of files) {
+        fileNames.innerHTML += el.name + ' ';
+      }
+
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.createComponentForm.controls['file'].setValue({

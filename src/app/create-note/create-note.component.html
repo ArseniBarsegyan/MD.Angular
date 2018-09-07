@@ -8,8 +8,15 @@
     </div>
 
     <div class="form-group">
-      <input type="file" name="file" id="photo" class="upload" (change)="onFileChange($event)" #fileInput />
-      <label for="photo">Photo</label>
+      <input type="file"
+             name="file"
+             id="photo"
+             class="upload"
+             (change)="onFileChange($event, fileNames)"
+             #fileInput
+             multiple />
+      <label for="photo">Pick photos...</label>
+      <label #fileNames></label>
     </div>
 
     <button type="submit" class="button button-info" [disabled]='!createComponentForm.valid'>Create</button>

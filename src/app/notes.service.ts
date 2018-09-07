@@ -26,6 +26,7 @@ export class NotesService {
       }, error => {
         console.log(error);
       });
+    console.log(this.notes);
     return this.notes.slice();
   }
 
@@ -49,6 +50,7 @@ export class NotesService {
       }, error => {
         console.log(error);
       });
+    console.log(note);
   }
 
   updateNote(note: Note) {
