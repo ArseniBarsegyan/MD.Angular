@@ -7,14 +7,13 @@ import {AuthService} from './auth/auth.service';
 @Injectable()
 export class NotesService {
   private headers: HttpHeaders;
-  private url = 'http://localhost:51870/api/notes';
+  private url = 'http://localhost:51866/api/notes';
 
   private notes: Note[] = [];
   notesChanged = new Subject<Note[]>();
 
-  constructor(private http: HttpClient, private authService: AuthService) {
-    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8',
-      'Authorization' : this.authService.getAuthorizationHeaderValue()});
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
   }
 
   getNotes() {
