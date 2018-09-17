@@ -47,6 +47,7 @@ export class AuthService {
   completeAuthentication(): Promise<void> {
     return this.manager.signinRedirectCallback().then(user => {
       this.user = user;
+      console.log(user);
     });
   }
 
