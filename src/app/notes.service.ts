@@ -12,8 +12,9 @@ export class NotesService {
   private notes: Note[] = [];
   notesChanged = new Subject<Note[]>();
 
-  constructor(private http: HttpClient, private auth: AuthService) {
-    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8',
+      'Authorization' : this.authService.getAuthorizationHeaderValue()});
   }
 
   getNotes() {
