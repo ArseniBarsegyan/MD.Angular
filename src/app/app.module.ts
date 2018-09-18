@@ -22,6 +22,8 @@ import {AuthGuardService} from './auth/auth.guard.service';
 import { NoteStartComponent } from './note-start/note-start.component';
 import { NoteEditComponent } from './note-edit/note-edit.component';
 import {AuthInterceptor} from './shared/auth.interceptor';
+import { AuthCallbackComponent } from './auth/auth-callback/auth-callback.component';
+import { LogoutCallbackComponent } from './auth/logout-callback/logout-callback.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {AuthInterceptor} from './shared/auth.interceptor';
     NotesComponent,
     NoteItemComponent,
     NoteStartComponent,
-    NoteEditComponent
+    NoteEditComponent,
+    AuthCallbackComponent,
+    LogoutCallbackComponent
   ],
   imports: [
     BrowserModule,

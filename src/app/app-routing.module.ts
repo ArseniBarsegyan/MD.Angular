@@ -10,11 +10,15 @@ import {NotesComponent} from './notes/notes.component';
 import {AuthGuardService} from './auth/auth.guard.service';
 import {NoteStartComponent} from './note-start/note-start.component';
 import {NoteEditComponent} from './note-edit/note-edit.component';
+import { AuthCallbackComponent } from './auth/auth-callback/auth-callback.component';
+import { LogoutCallbackComponent } from './auth/logout-callback/logout-callback.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'auth-callback', component: AuthCallbackComponent},
+  {path: 'logout-callback', component: LogoutCallbackComponent},
   {
     path: 'notes', component: NotesComponent, canActivate: [AuthGuardService], children: [
       {path: '', component: NoteStartComponent},

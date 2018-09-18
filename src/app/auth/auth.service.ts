@@ -6,10 +6,10 @@ export function getClientSettings(): UserManagerSettings {
   return {
     authority: 'http://localhost:51866/',
     client_id: 'Angular_client',
-    redirect_uri: 'http://localhost:4200',
-    post_logout_redirect_uri: 'http://localhost:4200/',
-    response_type: "id_token token",
-    scope: "openid profile MD.CoreApi",
+    redirect_uri: 'http://localhost:4200/auth-callback',
+    post_logout_redirect_uri: 'http://localhost:4200/logout-callback',
+    response_type: 'id_token token',
+    scope: 'openid profile MD.CoreApi custom.profile',
     filterProtocolClaims: true,
     loadUserInfo: true,
     userStore: new WebStorageStateStore({ store: window.localStorage })
@@ -40,6 +40,13 @@ export class AuthService {
     return `${this.user.token_type} ${this.user.access_token}`;
   }
 
+  authenticate() {
+    this.manager.signinRedirect();
+    return this.manager.signinRedirectCallback().then(user => {
+      this.user = user;
+    });
+  }
+
   startAuthentication(): Promise<void> {
     return this.manager.signinRedirect();
   }
@@ -47,7 +54,16 @@ export class AuthService {
   completeAuthentication(): Promise<void> {
     return this.manager.signinRedirectCallback().then(user => {
       this.user = user;
-      console.log(user);
+    });
+  }
+
+  startLogout(): Promise<void> {
+    return this.manager.signoutRedirect();
+  }
+
+  completeLogout(): Promise<void> {
+    return this.manager.signoutRedirectCallback().then(user => {
+      this.user = null;
     });
   }
 

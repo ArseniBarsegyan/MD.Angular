@@ -25,15 +25,5 @@ export class SigninComponent implements OnInit {
     const email = signInForm.controls['email'].value;
     const password = signInForm.controls['password'].value;
     this.authService.startAuthentication();
-
-    // this.authService.login(email, password)
-    //   .subscribe((token) => {
-    //       localStorage.setItem('user', token);
-    //       this.router.navigate(['/notes/']);
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //     }
-    //   );
   }
 }

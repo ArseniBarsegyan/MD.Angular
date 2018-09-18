@@ -29,8 +29,7 @@ export class CreateNoteComponent implements OnInit {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
 
-      var files = event.target.files;
-      console.log(files);
+      let files = event.target.files;
 
       for (let el of files) {
         fileNames.innerHTML += el.name + ' ';

@@ -3,6 +3,7 @@ import {Note} from '../note';
 import {NotesService} from '../notes.service';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router} from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-notes-list',
@@ -14,6 +15,7 @@ export class NotesListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(private notesService: NotesService,
+              private authService: AuthService,
               private router: Router,
               private route: ActivatedRoute) {
   }
@@ -27,8 +29,8 @@ export class NotesListComponent implements OnInit, OnDestroy {
   }
 
   onNewNote() {
-    if (localStorage.getItem('user') === null) {
-      alert('Plase, login');
+    if (!this.authService.isLoggedIn()) {
+      alert('Please, login');
     }
     this.router.navigate(['new'], {relativeTo: this.route});
   }
