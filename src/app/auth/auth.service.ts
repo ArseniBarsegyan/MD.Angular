@@ -81,7 +81,7 @@ export class AuthService {
   register(email: string, password: string) {
     const myHeaders = new HttpHeaders().set('Content-type', 'application/json');
 
-    return this.http.post('https://localhost:51870/account/register', JSON.stringify({ email, password }),
+    return this.http.post('https://localhost:44390/account/', JSON.stringify({ email, password }),
       { headers: myHeaders, responseType: 'json'});
   }
 }

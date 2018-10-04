@@ -25,7 +25,8 @@ export class SignupComponent implements OnInit {
     const email = signUpForm.controls['email'].value;
     const password = signUpForm.controls['password'].value;
     this.authService.register(email, password)
-      .subscribe((result) => {
+      .subscribe((response: string) => {
+        console.log(response);
         this.router.navigate(['signin']);
       },
       (error => {
