@@ -1,6 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {UserManager, UserManagerSettings, User, WebStorageStateStore} from 'oidc-client';
+import { TouchSequence } from 'selenium-webdriver';
 
 export function getClientSettings(): UserManagerSettings {
   return {
@@ -18,7 +19,7 @@ export function getClientSettings(): UserManagerSettings {
 
 @Injectable()
 export class AuthService {
-  private url = 'http://localhost:51870/Account/';
+  private url = 'http://localhost:49790/Account/';
   private manager = new UserManager(getClientSettings());
   private user: User = null;
 
@@ -37,7 +38,10 @@ export class AuthService {
   }
 
   getAuthorizationHeaderValue(): string {
-    return `${this.user.token_type} ${this.user.access_token}`;
+    if (this.user != null) {
+      return `${this.user.token_type} ${this.user.access_token}`;
+    }
+    return null;
   }
 
   authenticate() {
@@ -74,10 +78,10 @@ export class AuthService {
   //     { headers: myHeaders, responseType: 'text'});
   // }
   //
-  // register(email: string, password: string) {
-  //   const myHeaders = new HttpHeaders().set('Content-type', 'application/json');
-  //
-  //   return this.http.post(this.url + 'Register', JSON.stringify({ email, password }),
-  //     { headers: myHeaders, responseType: 'text'});
-  // }
+  register(email: string, password: string) {
+    const myHeaders = new HttpHeaders().set('Content-type', 'application/json');
+
+    return this.http.post('https://localhost:51870/account/register', JSON.stringify({ email, password }),
+      { headers: myHeaders, responseType: 'json'});
+  }
 }
