@@ -83,7 +83,7 @@ export class AuthService {
     this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
 
     console.log(JSON.stringify({email, password}));
-    return this.http.post('https://localhost:44344/account/', JSON.stringify({ email, password }),
+    return this.http.post('https://localhost:44390/account/', JSON.stringify({ email, password }),
       { headers: this.headers, responseType: 'text' });
   }
 }
