@@ -19,6 +19,7 @@ export function getClientSettings(): UserManagerSettings {
 
 @Injectable()
 export class AuthService {
+  private headers: HttpHeaders;
   private url = 'http://localhost:49790/Account/';
   private manager = new UserManager(getClientSettings());
   private user: User = null;
@@ -79,9 +80,10 @@ export class AuthService {
   // }
   //
   register(email: string, password: string) {
-    const myHeaders = new HttpHeaders().set('Content-type', 'application/json');
+    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
 
-    return this.http.post('https://localhost:44390/account/', JSON.stringify({ email, password }),
-      { headers: myHeaders, responseType: 'json'});
+    console.log(JSON.stringify({email, password}));
+    return this.http.post('https://localhost:44344/account/', JSON.stringify({ email, password }),
+      { headers: this.headers, responseType: 'text' });
   }
 }
