@@ -13,6 +13,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  onLoginClicked() {
+    this.authService.startAuthentication();
+  }
+
   onLogout() {
     this.authService.startLogout();
     this.router.navigate(['/']);

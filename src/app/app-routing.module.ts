@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CreateNoteComponent } from './create-note/create-note.component';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { NotesComponent } from './notes/notes.component';
@@ -15,7 +14,6 @@ import { LogoutCallbackComponent } from './auth/logout-callback/logout-callback.
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'auth-callback', component: AuthCallbackComponent },
   { path: 'logout-callback', component: LogoutCallbackComponent },
