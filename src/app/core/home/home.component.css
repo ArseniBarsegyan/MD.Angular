@@ -1,7 +1,7 @@
 .header {
   background-size: auto;
   height: 100vh;
-  background: url("../../assets/img/beverage-book-caffeine_2560.jpg") fixed no-repeat center;
+  background: url("../../../assets/img/beverage-book-caffeine_2560.jpg") fixed no-repeat center;
   color: white;
   text-align: center;
 }

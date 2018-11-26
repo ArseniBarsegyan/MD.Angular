@@ -3,53 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './header/header.component';
-import { NotesListComponent } from './notes-list/notes-list.component';
-import { NotesService } from './notes.service';
-import { CreateNoteComponent } from './create-note/create-note.component';
-import { NoteDetailComponent } from './note-detail/note-detail.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SignupComponent } from './auth/signup/signup.component';
+import { NotesService } from './notes/notes.service';
 import { AuthService } from './auth/auth.service';
-import { HomeComponent } from './home/home.component';
-import { DropdownDirective } from './dropdown.directive';
-import { NotesComponent } from './notes/notes.component';
-import { NoteItemComponent } from './note-item/note-item.component';
 import { AuthGuardService } from './auth/auth.guard.service';
-import { NoteStartComponent } from './note-start/note-start.component';
-import { NoteEditComponent } from './note-edit/note-edit.component';
 import { AuthInterceptor } from './shared/auth.interceptor';
-import { AuthCallbackComponent } from './auth/auth-callback/auth-callback.component';
-import { LogoutCallbackComponent } from './auth/logout-callback/logout-callback.component';
+
+import { AuthModule } from './auth/auth.module';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ErrorsModule } from './errors/errors.module';
 
 @NgModule({
   declarations: [
-    DropdownDirective,
-    AppComponent,
-    HeaderComponent,
-    NotesListComponent,
-    CreateNoteComponent,
-    NoteDetailComponent,
-    PageNotFoundComponent,
-    SignupComponent,
-    HomeComponent,
-    NotesComponent,
-    NoteItemComponent,
-    NoteStartComponent,
-    NoteEditComponent,
-    AuthCallbackComponent,
-    LogoutCallbackComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule,
+    CoreModule,
+    AuthModule,
     AppRoutingModule,
-    HttpClientModule
-  ],
-  exports: [
-    DropdownDirective
+    ErrorsModule
   ],
   providers: [
     NotesService,
