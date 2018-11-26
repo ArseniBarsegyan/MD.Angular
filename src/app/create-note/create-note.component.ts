@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
-import {NotesService} from '../notes.service';
-import {Router} from '@angular/router';
-import {Photo} from '../photo';
-import {Note} from '../note';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { NotesService } from '../notes.service';
+import { Router } from '@angular/router';
+import { Photo } from '../photo';
+import { Note } from '../note';
 
 @Component({
   selector: 'app-create-note',
@@ -29,9 +29,9 @@ export class CreateNoteComponent implements OnInit {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
 
-      let files = event.target.files;
+      const files = event.target.files;
 
-      for (let el of files) {
+      for (const el of files) {
         fileNames.innerHTML += el.name + ' ';
       }
 
